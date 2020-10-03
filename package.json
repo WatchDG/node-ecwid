@@ -1,0 +1,38 @@
+{
+  "name": "node-ecwid",
+  "version": "1.0.0",
+  "description": "ecwid",
+  "keywords": [
+    "ecwid"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Grigoriy Baranov",
+    "email": "baranov@w3m.co"
+  },
+  "repository": "github:WatchDG/node-ecwid",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "formatter": "npx prettier --write \"src/**/*.ts\"",
+    "linter": "npx tslint -p tsconfig.json \"src/**/*.ts\"",
+    "build": "npm run formatter && npm run linter && npx tsc",
+    "preversion": "npm run build",
+    "version": "npm run build",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "node-result": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.9.5"
+  }
+}
