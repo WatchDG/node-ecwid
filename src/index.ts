@@ -7,14 +7,14 @@ type StoreAccessToken = string;
 // Order
 type OrderId = number;
 
-class Ecwid {
+export class Ecwid {
   private readonly storeId: StoreId;
   private readonly storeAccessToken: StoreAccessToken;
   private readonly instance: AxiosInstance;
   constructor(storeId: StoreId, storeAccessToken: StoreAccessToken, timeout: number = 1000, headers: object = {}) {
     this.storeId = storeId;
     this.storeAccessToken = storeAccessToken;
-    const baseURL = ` https://app.ecwid.com/api/v3/${this.storeId}`;
+    const baseURL = `https://app.ecwid.com/api/v3/${this.storeId}`;
     const params = {
       token: this.storeAccessToken,
     };
