@@ -11,6 +11,7 @@ export class Ecwid {
   private readonly storeId: StoreId;
   private readonly storeAccessToken: StoreAccessToken;
   private readonly instance: AxiosInstance;
+
   constructor(storeId: StoreId, storeAccessToken: StoreAccessToken, timeout: number = 1000, headers: object = {}) {
     this.storeId = storeId;
     this.storeAccessToken = storeAccessToken;
@@ -21,6 +22,22 @@ export class Ecwid {
     this.instance = Axios.create({ baseURL, timeout, headers, params });
   }
 
+  /**
+   * Получить профиль магазина.
+   */
+  async getProfile() {
+    try {
+      const { data } = await this.instance.get('/profile');
+      return ResultOk(data);
+    } catch (error) {
+      return ResultFail(error);
+    }
+  }
+
+  /**
+   * Получить заказ.
+   * @param {OrderId} id - идентификатор заказа.
+   */
   async getOrder(id: OrderId) {
     try {
       const { data } = await this.instance.get(`/orders/${id}`);
