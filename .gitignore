@@ -1,5 +1,5 @@
 /.idea
 /node_modules
 /lib
-/jsdoc
 yarn.lock
+package-lock.json

@@ -1,11 +1,5 @@
 import Axios, { AxiosInstance } from 'axios';
-import { ResultFail, ResultOk } from 'node-result';
-
-type StoreId = number;
-type StoreAccessToken = string;
-
-// Order
-type OrderId = number;
+import { ResultFail, ResultOk, ResultFAIL, ResultOK } from 'node-result';
 
 export class Ecwid {
   private readonly storeId: StoreId;
@@ -23,7 +17,7 @@ export class Ecwid {
   }
 
   /**
-   * Получить профиль магазина.
+   * Get store profile.
    */
   async getProfile() {
     try {
@@ -35,12 +29,24 @@ export class Ecwid {
   }
 
   /**
-   * Получить заказ.
-   * @param {OrderId} id - идентификатор заказа.
+   * Get order by order_id.
+   * @param {OrderId} id - order_id.
    */
   async getOrder(id: OrderId) {
     try {
       const { data } = await this.instance.get(`/orders/${id}`);
+      return ResultOk(data);
+    } catch (error) {
+      return ResultFail(error);
+    }
+  }
+
+  /**
+   * Get all payments options.
+   */
+  async getPaymentOptions(): Promise<ResultOK<PaymentOption[]> | ResultFAIL<Error>> {
+    try {
+      const { data } = await this.instance.get('/profile/paymentOptions');
       return ResultOk(data);
     } catch (error) {
       return ResultFail(error);

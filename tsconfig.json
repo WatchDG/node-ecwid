@@ -9,14 +9,13 @@
     "sourceMap": false,
     "strict": true,
     "declaration": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
+    "removeComments": true,
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "lib"
   ]
 }

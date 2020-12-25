@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "axios": "^0.19.2",
-    "node-result": "^5.0.0"
+    "node-result": "^5.3.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.23",
